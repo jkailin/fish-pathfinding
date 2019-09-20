@@ -1,61 +1,15 @@
-# game_design
-This repository is for the "Introduction of Game Design" course of College of William and Mary
+# Description
 
-The framework is based on Professor Pieter Peers' Pong game framework.
+This program shows the pathfinding algorithm written for the game Fishnapped (https://github.com/zxdan523/game_design). The algorithm was not used in the final version of the game due to a change in gameplay design.
 
-## Developers
+# Build Instructions
 
-Jonathan Lin, Stephen Tung, Jimmy Wei, Xiaodan Zhu
+1. ./build.sh
+2. cd build
+3. ./TestPath for algorithm
+4. ./FISHNAPPED for original game
 
-## Compile Instruction
-
-Create a folder named Debug/Release (related to the compile mode you want), and locate into the directory.
-```
-mkdir Debug
-cd Debug
-```
-
-Create Makefile by CMake.
-```
-cmake ..
-```
-
-Compile the program.
-
-```
-make
-```
-
-Run the game
-
-```
-./FISHNAPPED
-```
-
-Follow the instructions and enjoy!
-
-Our classes inherit UML graph.
-
-![](doc/class-diagram_final.png)
-
-There are five levels.
 
 Level 1:
 
 ![](doc/1.png)
-
-Level 2:
-
-![](doc/2.png)
-
-Level 3:
-
-![](doc/3.png)
-
-Level 4:
-
-![](doc/4.png)
-
-Level 5:
-
-![](doc/5.png)
