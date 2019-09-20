@@ -11,6 +11,8 @@ This program shows the pathfinding algorithm written for the game Fishnapped (ht
 
 Note: Make sure you cd into the folder and not enter: ./build/TestPath
 
+# Examples
+
 Pathfinding Example:
 
 
