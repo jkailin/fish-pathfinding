@@ -9,7 +9,12 @@ This program shows the pathfinding algorithm written for the game Fishnapped (ht
 3. ./TestPath for algorithm
 4. ./FISHNAPPED for original game
 
+Note: Make sure you cd into the folder and not enter: ./build/TestPath
 
-Level 1:
+Pathfinding Example:
+
+
+
+Original Game:
 
 ![](doc/1.png)
