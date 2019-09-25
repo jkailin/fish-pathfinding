@@ -12,12 +12,14 @@
 
 using namespace std;
 
+// Takes the coordinates of a polygon and increases its size by expand_size.
 std::vector<sf::Vector2f> expand_polygon(std::vector<sf::Vector2f> source_polygon, double expand_size)
 {
 	double x_offset, y_offset;
 	double x_size, y_size;
 	double x_ratio, y_ratio;
 
+	// initialize
 	x_offset = source_polygon[0].x;
 	y_offset = source_polygon[0].y;
 	x_size = source_polygon[0].x;
@@ -66,7 +68,7 @@ std::vector<sf::Vector2f> expand_polygon(std::vector<sf::Vector2f> source_polygo
 	return output_polygon;
 }
 
-
+// Finds the point where two lines intersect
 sf::Vector2f line_intersection(sf::Vector2f line1_start_point, sf::Vector2f line1_end_point, sf::Vector2f line2_start_point, sf::Vector2f line2_end_point)
 {
 	sf::Vector2f intersection_point(-10000, -10000);
@@ -94,6 +96,7 @@ sf::Vector2f line_intersection(sf::Vector2f line1_start_point, sf::Vector2f line
 	return intersection_point;
 }
 
+// Check if a line intersects a polygon.
 int polygon_intersect_line(sf::Vector2f line_start_point, sf::Vector2f line_end_point, std::vector<sf::Vector2f> polygon) 
 {
 	sf::Vector2f current_point, next_point;
@@ -102,6 +105,7 @@ int polygon_intersect_line(sf::Vector2f line_start_point, sf::Vector2f line_end_
 	double line_min_x, line_max_x, line_min_y, line_max_y;
 	int rc = 0;
 
+	// find max x of line.
 	if (line_start_point.x < line_end_point.x)
 	{
 		line_min_x = line_start_point.x;
@@ -112,6 +116,8 @@ int polygon_intersect_line(sf::Vector2f line_start_point, sf::Vector2f line_end_
 		line_min_x = line_end_point.x;
 		line_max_x = line_start_point.x;
 	}
+
+	// find max y of line
 	if (line_start_point.y < line_end_point.y)
 	{
 		line_min_y = line_start_point.y;
@@ -122,14 +128,20 @@ int polygon_intersect_line(sf::Vector2f line_start_point, sf::Vector2f line_end_
 		line_min_y = line_end_point.y;
 		line_max_y = line_start_point.y;
 	}
+
+	// iterate through the polygons points
 	for (int i = 0; i < polygon.size(); i++)
 	{
+
 		current_point = polygon[i];
+
+		// assumes points are in clockwise/counter-clockwise order
 		if (i < polygon.size() - 1)
 			next_point = polygon[i + 1];
 		else
 			next_point = polygon[0];
 
+		// if both curr and next are less/greater than min/max, can't intersect that line
 		if ((current_point.x <= line_min_x) && (next_point.x <= line_min_x))
 			continue;
 
@@ -142,13 +154,17 @@ int polygon_intersect_line(sf::Vector2f line_start_point, sf::Vector2f line_end_
 		if ((current_point.y >= line_max_y) && (next_point.y >= line_max_y))
 			continue;
 
+		// check if line intersects polygon edge
 		intersect_point = line_intersection(line_start_point, line_end_point, current_point, next_point);
+		
+		// if intersection was found
 		if (intersect_point.x > -10000)
 		{
 			if (line_min_x != line_max_x)
 			{
 				if ((intersect_point.x > line_min_x) && (intersect_point.x < line_max_x))
 				{
+					// intersection was found
 					rc = 1;
 					break;
 				}
@@ -157,6 +173,7 @@ int polygon_intersect_line(sf::Vector2f line_start_point, sf::Vector2f line_end_
 			{
 				if ((intersect_point.y > line_min_y) && (intersect_point.y < line_max_y))
 				{
+					// intersection was found
 					rc = 1;
 					break;
 				}
@@ -175,11 +192,15 @@ sf::Vector2f getPath(sf::Vector2f target_point, sf::Vector2f source_point, std::
 
 	output_point.x = target_point.x;
 	output_point.y = target_point.y;
+
+	// Distance from player fish to enemy fish (default)
 	source_distance = sqrt((source_point.x - target_point.x) * (source_point.x - target_point.x) + (source_point.y - target_point.y) * (source_point.y - target_point.y));
 	target_distance = 2048;
 
+	// Iterate through all the shapes on the board. They are all convex.
 	for (auto const& polygon : polygons)
 	{
+		// check if the line between enemy fish and player fish intersects a polygon
 		rc = polygon_intersect_line(source_point, target_point, polygon);
 		if (rc == 1)
 		{	

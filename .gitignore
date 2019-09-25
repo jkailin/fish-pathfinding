@@ -2,7 +2,9 @@ local.properties
 .idea
 .gradle
 build
+debug
 android.iml
 app/build
 app/.externalNativeBuild
 app/src/main/obj
+.vscode/
