@@ -104,6 +104,6 @@ void Fish::draw(sf::RenderTarget& target,sf::RenderStates states) const
 {
     for(int i=0;i<_bubbles.size();i++)
     {
-        target.draw(_bubbles[i],states);
+        // target.draw(_bubbles[i],states);
     }
 }

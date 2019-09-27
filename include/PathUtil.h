@@ -5,34 +5,16 @@
 #include <cmath>
 #include <random>
 #include <vector>
-
-// Finds the point where two lines intersect
-static sf::Vector2f line_intersection(sf::Vector2f line1_start_point, sf::Vector2f line1_end_point, sf::Vector2f line2_start_point, sf::Vector2f line2_end_point)
-{
-    sf::Vector2f intersection_point(-10000, -10000);
-
-    double dy1 = line1_end_point.y - line1_start_point.y;
-    double dx1 = line1_end_point.x - line1_start_point.x;
-    double dy2 = line2_end_point.y - line2_start_point.y;
-    double dx2 = line2_end_point.x - line2_start_point.x;
-
-    if (dy1 * dx2 != dy2 * dx1)
-    {
-        double x, y;
-
-        x = ((line2_start_point.y - line1_start_point.y) * dx1 * dx2 + dy1 * dx2 * line1_start_point.x - dy2 * dx1 * line2_start_point.x) / (dy1 * dx2 - dy2 * dx1);
-
-        if (dx1 != 0)
-            y = line1_start_point.y + (dy1 / dx1) * (x - line1_start_point.x);
-        else
-            y = line2_start_point.y + (dy2 / dx2) * (x - line2_start_point.x);
-
-        intersection_point.x = x;
-        intersection_point.y = y;
-    }
-
-    return intersection_point;
-    }
+#include "math.h"
 
 
+class PathUtil {
+public:
+    static sf::Vector2f isLinesIntersect(sf::Vector2f line1_start_point, sf::Vector2f line1_end_point, sf::Vector2f line2_start_point, sf::Vector2f line2_end_point);
+    static bool isPolygonLineIntersect(sf::Vector2f line_start_point, sf::Vector2f line_end_point, std::vector<sf::Vector2f> polygon);
+    static sf::Vector2f getPath(sf::Vector2f target_point, sf::Vector2f source_point, std::vector<std::vector<sf::Vector2f>> polygons, double travelDistance);
+    static std::vector<sf::Vector2f> expandPolygon(std::vector<sf::Vector2f> polygon, double expand_size);
+    static sf::Vector2f nextTargetPoint(sf::Vector2f currPoint, sf::Vector2f targetPoint, double deltaTime);
+
+};
 #endif

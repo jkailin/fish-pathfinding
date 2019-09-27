@@ -18,7 +18,7 @@ int polygon_intersect_line(sf::Vector2f target_point, sf::Vector2f source_point,
 
     int angleRotation;
 
-
+    return 0;
 
 }
 
@@ -58,14 +58,14 @@ int main(int argc, char **argv)
         shape1.push_back(sf::Vector2f(200, 30));
         shape1.push_back(sf::Vector2f(50, 150));
         test.push_back(shape1);
-        expand_test.push_back(expand_polygon(shape1, minion.getHeadDistance() + 40));
+        // expand_test.push_back(expand_polygon(shape1, minion.getHeadDistance() + 40));
 
         std::vector<sf::Vector2f> shape2;
         shape2.push_back(sf::Vector2f(500, 600));
         shape2.push_back(sf::Vector2f(400, 300));
         shape2.push_back(sf::Vector2f(600, 400));
         test.push_back(shape2);
-        expand_test.push_back(expand_polygon(shape2, minion.getHeadDistance() + 40));
+        // expand_test.push_back(expand_polygon(shape2, minion.getHeadDistance() + 40));
 
         std::vector<sf::Vector2f> shape3;
         shape3.push_back(sf::Vector2f(700, 60));
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
         shape3.push_back(sf::Vector2f(850, 100));
         shape3.push_back(sf::Vector2f(650, 100));
         test.push_back(shape3);
-        expand_test.push_back(expand_polygon(shape3, minion.getHeadDistance() + 40));
+        // expand_test.push_back(expand_polygon(shape3, minion.getHeadDistance() + 40));
         terrain.load(test);
 
         // test without shapes
@@ -111,7 +111,8 @@ int main(int argc, char **argv)
             currPos = minion.getKnot(0).getPosition();
 
             // edit this
-            targetPoint = getPath(larry.getKnot(0).getPosition(), currPos, expand_test);
+            // targetPoint = getPath(larry.getKnot(0).getPosition(), currPos, expand_test);
+            targetPoint = sf::Vector2f(1,1);
 
             travelDirection = targetPoint - currPos;
 
