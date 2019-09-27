@@ -17,7 +17,7 @@ Note: Make sure you cd into the folder and not enter: ./build/TestPath
 
 Pathfinding Example:
 
-
+![](doc/pathfinding.gif)
 
 Original Game:
 
