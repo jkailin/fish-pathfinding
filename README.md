@@ -22,7 +22,7 @@ cd build
 ./TestPath
 ./FISHNAPPED
 ```
-Note: TestPath runs the algorithm example. FISHNAPPED runs the original game. Also make sure you cd into the folder and not use: ./build/TestPath
+Note: TestPath runs the algorithm example. FISHNAPPED runs the original game. Also make sure you cd into the folder and not use: ```bash ./build/TestPath ```
 
 # Examples
 
