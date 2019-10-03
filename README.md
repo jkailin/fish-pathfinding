@@ -4,14 +4,25 @@ This program shows the pathfinding algorithm written for the game Fishnapped (ht
 
 # Build Instructions
 
-1. sudo apt-get install cmake
-2. sudo apt-get install libsfml-dev
-3. ./build.sh
-4. cd build
-5. ./TestPath for algorithm
-6. ./FISHNAPPED for original game
+## Mac
+```bash
+brew install cmake
+brew install sfml
+```
+## Linux
+```bash
+sudo apt-get install cmake
+sudo apt-get install libsfml-dev
+```
+To run on Mac/Linux:
 
-Note: Make sure you cd into the folder and not enter: ./build/TestPath
+```bash
+./build.sh
+cd build
+./TestPath
+./FISHNAPPED
+```
+Note: TestPath runs the algorithm example. FISHNAPPED runs the original game. Also make sure you cd into the folder and not use: ./build/TestPath
 
 # Examples
 
